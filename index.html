@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Form</title>
+
+    <link
+      href="
+https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css
+"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <section id="contact" class="py-12 bg-gray-600 items-center m-5">
+      <div class="container mx-auto px-4 lg:w-1/2 flex justify-center">
+        <div
+          class="bg-white shadow-md border-2 border-solid border-green-600 rounded-lg p-5 w-3/4"
+        >
+          <h3
+            class="text-3xl mb-8 text-yellow-400 p-4 justify-center text-center font-bold"
+          >
+            STUDENT FORM
+          </h3>
+          <form
+            id="studentForm"
+            action="#"
+            method="POST"
+            class="grid grid-cols-1 sm:grid-cols-2 gap-6"
+          >
+            <div>
+              <label for="name" class="block text-gray-700 font-semibold mb-2"
+                >Name</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your name"
+                class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+
+            <div>
+              <label for="name" class="block text-gray-700 font-semibold mb-2"
+                >Age</label
+              >
+              <input
+                type="number"
+                id="age"
+                name="name"
+                placeholder="Enter your Age"
+                class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+
+            <div>
+              <label for="name" class="block text-gray-700 font-semibold mb-2"
+                >Gender</label
+              >
+              <div
+                class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              >
+                <input type="radio" id="Gender" />Male |
+                <input type="radio" />Female.
+              </div>
+            </div>
+
+            <div>
+              <label for="email" class="block text-gray-700 font-semibold mb-2"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="mail"
+                name="email"
+                placeholder="Enter your email"
+                class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+            <div class="sm:col-span-2">
+              <label
+                for="subject"
+                class="block text-gray-700 font-semibold mb-2"
+                >Course</label
+              >
+              <input
+                type="text"
+                id="course"
+                name="subject"
+                placeholder="Enter the course"
+                class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+            <div class="sm:col-span-2">
+              <button
+                type="submit"
+                class="w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300"
+              >
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <div class="bg-blue-300 m-5">
+      <table id="studentTable" class="flex justify-center font-bold text-white">
+        <tr>
+          <td class="px-5 border-2 border-black">NAME</td>
+          <td class="px-5 border-2 border-black">AGE</td>
+          <td class="px-5 border-2 border-black">COURSE</td>
+          <td class="px-5 border-2 border-black">EMAIL</td>
+          <td class="px-5 border-2 border-black">ACTION</td>
+        </tr>
+        <td id="td"></td>
+      </table>
+    </div>
+
+    <script>
+      var studentForm = document.getElementById("studentForm");
+
+      addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        var name = document.getElementById("name").value;
+        console.log(name);
+        var age = document.getElementById("age").value;
+        console.log(age);
+        var course = document.getElementById("course").value;
+        console.log(course);
+        var email = document.getElementById("mail").value;
+        console.log(email);
+
+        var table = document.getElementById("studentTable");
+        var newRow = table.insertRow();
+
+        var nameCall = newRow.insertCell();
+        var ageCall = newRow.insertCell();
+        var courseCall = newRow.insertCell();
+        var emailCall = newRow.insertCell();
+        var actionCall = newRow.insertCell();
+
+        nameCall.innerHTML = name;
+        nameCall.classList.add("px-5", "border-2", "border-black");
+
+        ageCall.innerHTML = age;
+        ageCall.classList.add("px-5", "border-2", "border-black");
+
+        courseCall.innerHTML = course;
+        courseCall.classList.add("px-5", "border-2", "border-black");
+
+        emailCall.innerHTML = email;
+        emailCall.classList.add("px-5", "border-2", "border-black");
+
+        actionCall.innerHTML =
+          '<button class="delete-btn bg-blue-800 px-7 rounded-md" onclick="deleteRow(this)">Delete</button>';
+
+        document.getElementById("studentForm").reset();
+      });
+
+      function deleteRow(btn) {
+        var row = btn.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+      }
+    </script>
+  </body>
+</html>
